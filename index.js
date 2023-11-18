@@ -10,7 +10,7 @@ const mongoose = require("mongoose");
 const { rateLimit } = require("express-rate-limit");
 var logger = require("morgan");
 
-const keys = require("./keys/keys");
+const keys = require("./keys/key");
 const app = express();
 
 
