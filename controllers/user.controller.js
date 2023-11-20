@@ -23,6 +23,7 @@ const getAllUsers = async (req, res) => {
         const users = await User.find();
         res.json({
             status: 200,
+            message:"success",
             data: users,
         });
     } catch (error) {
@@ -35,7 +36,7 @@ const getAllUsers = async (req, res) => {
 
 const getUserById = async (req, res) => {
     try {
-        const userId = req.params.id;
+        const userId = req.body.id;
         const user = await User.findById(userId);
 
         if (!user) {
@@ -59,7 +60,7 @@ const getUserById = async (req, res) => {
 
 const updateUser = async (req, res) => {
     try {
-        const userId = req.params.id;
+        const userId = req.body.id;
         const updatedUser = await User.findByIdAndUpdate(userId, req.body, {
             new: true,
         });
@@ -86,7 +87,7 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     try {
-        const userId = req.params.id;
+        const userId = req.body.id;
         const deletedUser = await User.findByIdAndDelete(userId);
 
         if (!deletedUser) {

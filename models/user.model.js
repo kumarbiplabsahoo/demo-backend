@@ -3,7 +3,18 @@ const { Schema, model } = mongoose;
 
 const userSchema = new Schema(
     {
-        userName: {
+        authType:{
+            type: String,
+            enum:["Admin","User","Emp"],
+            default:"User"
+        },
+        firstName: {
+            type: String
+        },
+        lastName: {
+            type: String 
+        },
+        image: {
             type: String
         },
         email: {
@@ -15,6 +26,7 @@ const userSchema = new Schema(
         password: {
             type: String,
         }
+        
     },
     {
         timestamps: true,
