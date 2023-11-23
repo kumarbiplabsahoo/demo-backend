@@ -6,10 +6,14 @@ const {
     deleteUser,
 } = require("../controllers/user.controller");
 
+const {
+    authenticateToken
+} = require("../middlewares/middleware");
+
 module.exports = app => {
     app.post("/api/createUser", createUser);
-    app.get("/api/getAllUsers", getAllUsers);
-    app.post("/api/getUserById", getUserById);
-    app.post("/api/updateUser", updateUser);
-    app.post("/api/deleteUser", deleteUser);
+    app.post("/api/getAllUsers", authenticateToken, getAllUsers);
+    app.post("/api/getUserById", authenticateToken, getUserById);
+    app.post("/api/updateUser", authenticateToken, updateUser);
+    app.post("/api/deleteUser", authenticateToken, deleteUser);
 };
